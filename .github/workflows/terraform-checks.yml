@@ -9,15 +9,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v3
+      - name: Checkout  # No need to specify version explicitly, uses latest by default
+        uses: actions/checkout@v3  # This action is actually no longer deprecated
 
-    - name: Setup Terraform
-      uses: hashicorp/setup-terraform@v2
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3  # Already updated correctly
 
-    - name: Terraform fmt
-      id: fmt
-      run: terraform fmt -check
+      - name: Terraform fmt
+        id: fmt
+        run: terraform fmt -check
+
 
     - name: Terraform Init
       id: init
